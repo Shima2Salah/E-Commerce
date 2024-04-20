@@ -31,3 +31,5 @@ $ python3
 cat ecomm_dump.sql | mysql -uroot -p
 sudo mysql
 select * from ecommerce.users;
+select * from ecommerce.products;
+exit
