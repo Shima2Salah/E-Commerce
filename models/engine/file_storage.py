@@ -6,16 +6,15 @@ Contains the FileStorage class
 import json
 import models
 from models.base_model import BaseModel
-from models.carts import Cart
-from models.categories import Category
-from models.orders import Order
-from models.order_items import Order_item
-from models.products import Product
-from models.users import User
+from models.category import Category
+from models.order import Order
+from models.orderItem import OrderItem
+from models.product import Product
+from models.user import User
 from hashlib import md5
 
 classes = {"BaseModel": BaseModel, "Product": Product, "User": User,
-           "Order": Order, "Order_item": Order_item, "Cart": Cart, "Category": Category}
+           "Order": Order, "OrderItem": OrderItem, "Category": Category}
 
 
 class FileStorage:

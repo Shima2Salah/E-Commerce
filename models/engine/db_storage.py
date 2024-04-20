@@ -5,19 +5,18 @@ Contains the class DBStorage
 
 import models
 from models.base_model import BaseModel, Base
-from models.carts import Cart
-from models.categories import Category
-from models.orders import Order
-from models.order_items import Order_item
-from models.products import Product
-from models.users import User
+from models.category import Category
+from models.order import Order
+from models.orderItem import OrderItem
+from models.product import Product
+from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Product": Product, "User": User,
-           "Order": Order, "Order_item": Order_item, "Cart": Cart, "Category": Category}
+           "Order": Order, "OrderItem": OrderItem, "Category": Category}
 
 
 class DBStorage:

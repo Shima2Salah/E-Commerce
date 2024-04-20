@@ -3,10 +3,10 @@ DROP DATABASE IF EXISTS ecommerce;
 
 -- Create database + user if doesn't exist
 CREATE DATABASE IF NOT EXISTS ecommerce;
-CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost';
-SET PASSWORD FOR 'hbnb_dev'@'localhost' = 'hbnb_dev_pwd';
-GRANT ALL ON hbnb_dev_db.* TO 'hbnb_dev'@'localhost';
-GRANT SELECT ON performance_schema.* TO 'hbnb_dev'@'localhost';
+CREATE USER IF NOT EXISTS 'ecomm_dev'@'localhost';
+SET PASSWORD FOR 'ecomm_dev'@'localhost' = 'ecomm_dev_pwd';
+GRANT ALL ON ecomm_dev_db.* TO 'ecomm_dev'@'localhost';
+GRANT SELECT ON performance_schema.* TO 'ecomm_dev'@'localhost';
 FLUSH PRIVILEGES;
 
 USE ecommerce;
@@ -45,7 +45,7 @@ CREATE TABLE `users` (
     `username` VARCHAR(255) NOT NULL,
     `contact_number` VARCHAR(100) NOT NULL,
     `email` VARCHAR(100) UNIQUE NOT NULL,
-    `password_hash` VARCHAR(100) NOT NULL
+    `password` VARCHAR(100) NOT NULL
 );
 -- Table structure for table orders
 
@@ -93,7 +93,7 @@ INSERT INTO products (product_name, price, description, image_url, category_id) 
 ('Skirt', 39.99, 'Stylish skirt for children', 'skirt.jpg', 3);
 
 -- Dummy data for users table
-INSERT INTO users (username, contact_number, email, password_hash) VALUES
+INSERT INTO users (username, contact_number, email, password) VALUES
 ('john_doe', '123456789', 'john@example.com', '123456'),
 ('jane_smith', '987654321', 'jane@example.com', '123456');
 
