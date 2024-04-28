@@ -14,18 +14,32 @@ class User(BaseModel, Base):
     """Representation of a user """
     if models.storage_t == 'db':
         __tablename__ = 'users'
-        username = Column(String(255), nullable=False)
+        first_name = Column(String(100), nullable=False)
+        last_name = Column(String(100), nullable=False)
         contact_number = Column(String(100), nullable=False)
         email = Column(String(100), unique=True, nullable=False)
         password = Column(String(100), nullable=False)
+        country = Column(String(100), nullable=False)
+        company_name = Column(String(100), nullable=False)
+        address = Column(String(100), nullable=False)
+        state_or_country = Column(String(100), nullable=False)
+        postal_or_zip = Column(String(100), nullable=False)
+        order_notes = Column(String(255))
         Orders = relationship("Order",
                               backref="users",
                               cascade="all, delete, delete-orphan")
     else:
-        username = ""
+        first_name = ""
+        last_name = ""
         contact_number = ""
         email = ""
         password = ""
+        country = ""
+        company_name = ""
+        address = ""
+        state_or_country = ""
+        postal_or_zip = ""
+        order_notes = ""
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

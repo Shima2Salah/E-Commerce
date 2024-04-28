@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """ holds class Product"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, Float, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
 
@@ -16,7 +16,7 @@ class Product(BaseModel, Base):
         price = Column(Float, nullable=False)
         description = Column(String(255))
         image_url = Column(String(255))
-        category_id = Column(String(60), ForeignKey('category.id'), nullable=False)
+        category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
         order_items = relationship("OrderItem",
                               backref="products",
                               cascade="all, delete, delete-orphan")

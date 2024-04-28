@@ -7,7 +7,7 @@ from datetime import datetime
 import models
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, Integer, DateTime, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
@@ -19,7 +19,9 @@ else:
 
 
 class BaseModel:
+    
     """The BaseModel class from which future classes will be derived"""
+    _id_counter = 0
     if models.storage_t == "db":
         id = Column(Integer, primary_key=True, autoincrement=True)
         created_at = Column(DateTime, default=datetime.utcnow)
@@ -42,10 +44,12 @@ class BaseModel:
         else:
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
+            self.id = BaseModel._id_counter
+            BaseModel._id_counter += 1 
 
     def __str__(self):
         """String representation of the BaseModel class"""
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, str(self.id),
                                          self.__dict__)
 
     def save(self):

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """ holds class OrderItem"""
 import models
 from models.base_model import BaseModel, Base
@@ -12,12 +12,13 @@ class OrderItem(BaseModel, Base):
     """Representation of OrderItem """
     if models.storage_t == "db":
         __tablename__ = 'order_items'
-        order_id = Column(String(60), ForeignKey('orders.id'), nullable=False)
-        product_id = Column(String(60), ForeignKey('products.id'), nullable=False)
+        product_id = Column(Integer, ForeignKey('products.id'), nullable=False)
         quantity = Column(Integer, nullable=False)
         price = Column(DECIMAL(10, 2), nullable=False)
+        orders = relationship("Order",
+                              backref="order_items",
+                              cascade="all, delete, delete-orphan")
     else:
-        order_id = ""
         product_id = ""
         quantity = ""
         price = ""

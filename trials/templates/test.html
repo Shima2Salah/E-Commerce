@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>Products</H1>
+        <UL>
+	    {% for product in sorted_products %}
+        <div class="shirt">
+            <div>
+               <a href="single.html"><img src="../static/images/{{ product['image_url'] }}" alt=""></a>
+            </div>
+            <div class="shirt-text">
+            <span class="up">
+                {{ product["product_name"] }}
+            </span>
+            <span>
+                {{ product["description"] }}
+            </span>
+            <span class="money">
+                {{ product["price"] }}
+            </span>
+            </div>
+        </div>
+	    {% endfor %}
+        </UL>
+    </BODY>
+</HTML>

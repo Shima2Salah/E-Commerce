@@ -6,17 +6,20 @@ Contains the class DBStorage
 import models
 from models.base_model import BaseModel, Base
 from models.category import Category
+from models.color import Color
 from models.order import Order
 from models.orderItem import OrderItem
 from models.product import Product
+from models.size import Size
 from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Product": Product, "User": User,
-           "Order": Order, "OrderItem": OrderItem, "Category": Category}
+classes = {"BaseModel": BaseModel, "Product": Product, "User": User,
+           "Color": Color, "Size": Size, "Order": Order,
+           "OrderItem": OrderItem, "Category": Category}
 
 
 class DBStorage:
@@ -26,17 +29,17 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        ECOMM_MYSQL_USER = getenv('ECOMM_MYSQL_USER')
+        ECOMM_MYSQL_PWD = getenv('ECOMM_MYSQL_PWD')
+        ECOMM_MYSQL_HOST = getenv('ECOMM_MYSQL_HOST')
+        ECOMM_MYSQL_DB = getenv('ECOMM_MYSQL_DB')
+        ECOMM_ENV = getenv('ECOMM_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
-        if HBNB_ENV == "test":
+                                      format(ECOMM_MYSQL_USER,
+                                             ECOMM_MYSQL_PWD,
+                                             ECOMM_MYSQL_HOST,
+                                             ECOMM_MYSQL_DB))
+        if ECOMM_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
@@ -46,7 +49,7 @@ class DBStorage:
             if cls is None or cls is classes[clss] or cls is clss:
                 objs = self.__session.query(classes[clss]).all()
                 for obj in objs:
-                    key = obj.__class__.__name__ + '.' + obj.id
+                    key = obj.__class__.__name__ + '.' + str(obj.id)
                     new_dict[key] = obj
         return (new_dict)
 

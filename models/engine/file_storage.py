@@ -7,14 +7,17 @@ import json
 import models
 from models.base_model import BaseModel
 from models.category import Category
+from models.color import Color
 from models.order import Order
 from models.orderItem import OrderItem
 from models.product import Product
+from models.size import Size
 from models.user import User
 from hashlib import md5
 
 classes = {"BaseModel": BaseModel, "Product": Product, "User": User,
-           "Order": Order, "OrderItem": OrderItem, "Category": Category}
+           "Color": Color, "Size": Size, "Order": Order,
+           "OrderItem": OrderItem, "Category": Category}
 
 
 class FileStorage:
@@ -38,7 +41,7 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
-            key = obj.__class__.__name__ + "." + obj.id
+            key = obj.__class__.__name__ + "." + str(obj.id)
             self.__objects[key] = obj
 
     def save(self):
@@ -64,7 +67,7 @@ class FileStorage:
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
         if obj is not None:
-            key = obj.__class__.__name__ + '.' + obj.id
+            key = obj.__class__.__name__ + '.' + str(obj.id)
             if key in self.__objects:
                 del self.__objects[key]
 

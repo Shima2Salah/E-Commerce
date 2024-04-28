@@ -34,3 +34,18 @@ sudo mysql
 >>> select * from ecommerce.users;
 >>> select * from ecommerce.products;
 >>> exit
+cat setup_ECommerce.sql | mysql -hlocalhost -uroot -p
+pip install Flask-SQLAlchemy
+
+python3 app.py
+python3 -m http.server
+pip install python-dotenv
+pip install -U Flask-SQLAlchemy
+pip install PyMySQL
+echo "SHOW GRANTS FOR 'ecomm_dev'@'localhost';" | mysql -uroot -p
+echo 'create Color name="Orange"' | ECOMM_MYSQL_USER=ecomm_dev ECOMM_MYSQL_PWD=ecomm_dev_pwd ECOMM_MYSQL_HOST=localhost ECOMM_MYSQL_DB=ecommerce ECOMM_TYPE_STORAGE=db ./console.py 
+echo 'all Color' | ECOMM_MYSQL_USER=ecomm_dev ECOMM_MYSQL_PWD=ecomm_dev_pwd ECOMM_MYSQL_HOST=localhost ECOMM_MYSQL_DB=ecommerce ECOMM_TYPE_STORAGE=db ./console.py
+ECOMM_MYSQL_USER=ecomm_dev ECOMM_MYSQL_PWD=ecomm_dev_pwd ECOMM_MYSQL_HOST=localhost ECOMM_MYSQL_DB=ecommerce ECOMM_TYPE_STORAGE=db python3 -m trials.product_list
+curl 0.0.0.0:5000/product_list ; echo ""
+from models.color import Color
+ len(storage.all(Color))
