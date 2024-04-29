@@ -13,11 +13,13 @@ class Order(BaseModel, Base):
     if models.storage_t == "db":
         __tablename__ = 'orders'
         user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-        order_item_id = Column(Integer, ForeignKey('order_items.id'), nullable=False)
+        '''order_item_id = Column(Integer, ForeignKey('order_items.id'), nullable=False)'''
         total_price = Column(DECIMAL(10, 2), nullable=False)
+        order_items = relationship("OrderItem",
+                              backref="orders",
+                              cascade="all, delete, delete-orphan")
     else:
         user_id = ""
-        order_item_id = ""
         total_price = ""
 
     def __init__(self, *args, **kwargs):

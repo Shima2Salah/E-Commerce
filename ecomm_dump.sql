@@ -94,19 +94,6 @@ CREATE TABLE `users` (
     `postal_or_zip` VARCHAR(100) NOT NULL,
     `order_notes` VARCHAR(255)
 );
--- Table structure for table order_items
-
-DROP TABLE IF EXISTS `order_items`;
-CREATE TABLE `order_items` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `product_id` INT NOT NULL,
-    `quantity` INT NOT NULL,
-    `price` DECIMAL(10, 2) NOT NULL,
-    KEY `product_id` (`product_id`),
-    CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES products(`id`)
-);
 -- Table structure for table orders
 
 DROP TABLE IF EXISTS `orders`;
@@ -114,14 +101,28 @@ CREATE TABLE `orders` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `order_item_id` INT NOT NULL,  
     `user_id` INT NOT NULL,
     `total_price` DECIMAL(10, 2) NOT NULL,
-    KEY `order_item_id` (`order_item_id`),
     KEY `user_id` (`user_id`),
-    CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`order_item_id`) REFERENCES order_items(`id`),
-    CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES users(`id`)
+    CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES users(`id`)
 );
+-- Table structure for table order_items
+
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE `order_items` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `order_id` INT NOT NULL,  
+    `product_id` INT NOT NULL,
+    `quantity` INT NOT NULL,
+    `price` DECIMAL(10, 2) NOT NULL,
+    KEY `order_id` (`order_id`),
+    KEY `product_id` (`product_id`),
+    CONSTRAINT `orders_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES order_items(`id`),
+    CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES products(`id`)
+);
+
 -- Dummy data for categories table
 INSERT INTO categories (name) VALUES
 ('Women'),
@@ -183,20 +184,18 @@ INSERT INTO users (First_Name, Last_Name, contact_number, email, password, Count
 ('John', 'Doe', '123456789', 'john@example.com', 'password123', 'USA', 'ABC Inc.', '123 Main St', 'CA', '12345', 'N/A'),
 ('Jane', 'Smith', '987654321', 'jane@example.com', 'password456', 'Canada', 'XYZ Ltd.', '456 Maple Ave', 'ON', 'M1N2P3', 'Please deliver before 5 PM');
 
+-- Dummy data for orders table
+INSERT INTO orders (user_id, total_price) VALUES
+(1, 689.92),
+(2, 404.94);
 
 -- Dummy data for order_items table
-INSERT INTO order_items (product_id, quantity, price) VALUES
-(1, 2, 31.98),
-(1, 1, 49.99),
-(1, 1, 29.99),
-(1, 1, 39.99),
-(2, 2, 59.98),
-(2, 1, 34.99),
-(2, 1, 19.99),
-(2, 1, 39.99);
-
-
--- Dummy data for orders table
-INSERT INTO orders (user_id, order_item_id, total_price) VALUES
-(1, 1 ,689.92),
-(2, 2 ,404.94);
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+(1, 1, 2, 31.98),
+(1, 2, 1, 49.99),
+(1, 3, 1, 29.99),
+(1, 4, 1, 39.99),
+(2, 1, 2, 59.98),
+(2, 2, 1, 34.99),
+(2, 3, 1, 19.99),
+(2, 4, 1, 39.99);

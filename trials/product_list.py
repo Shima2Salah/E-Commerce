@@ -6,6 +6,7 @@ from models import storage
 from models.category import Category
 from models.product import Product
 from models.user import User
+from models.order import Order
 from models.orderItem import OrderItem
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
@@ -38,6 +39,7 @@ def product_category():
 def add_order_item():
     if request.method == 'POST':
         # Extract product ID and quantity from the form
+        order_id = int(request.form.get('order_id'))
         product_id = int(request.form.get('product_id'))
         quantity = int(request.form.get('quantity'))
 
@@ -49,7 +51,7 @@ def add_order_item():
             price = product.price * quantity
 
             # Create a new OrderItem object with the provided information
-            new_order_item = OrderItem(product_id=product_id, quantity=quantity, price=price)
+            new_order_item = OrderItem(order_id=order_id, product_id=product_id, quantity=quantity, price=price)
 
             # Add the new order item to the database session
             storage.new(new_order_item)

@@ -12,13 +12,15 @@ class OrderItem(BaseModel, Base):
     """Representation of OrderItem """
     if models.storage_t == "db":
         __tablename__ = 'order_items'
+        order_id = Column(Integer, ForeignKey('orders.id'), nullable=False)
         product_id = Column(Integer, ForeignKey('products.id'), nullable=False)
         quantity = Column(Integer, nullable=False)
         price = Column(DECIMAL(10, 2), nullable=False)
-        orders = relationship("Order",
+        '''orders = relationship("Order",
                               backref="order_items",
-                              cascade="all, delete, delete-orphan")
+                              cascade="all, delete, delete-orphan")'''
     else:
+        order_id = ""
         product_id = ""
         quantity = ""
         price = ""
