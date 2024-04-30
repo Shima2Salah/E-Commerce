@@ -49,3 +49,6 @@ ECOMM_MYSQL_USER=ecomm_dev ECOMM_MYSQL_PWD=ecomm_dev_pwd ECOMM_MYSQL_HOST=localh
 curl 0.0.0.0:5000/product_list ; echo ""
 from models.color import Color
  len(storage.all(Color))
+
+ sudo lsof -i :5000
+ sudo kill 1362 4135

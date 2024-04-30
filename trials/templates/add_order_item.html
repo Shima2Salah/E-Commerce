@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Order Item</title>
-</head>
-<body>
+<HTML lang="en">
+<HEAD>
+    <TITLE>Add Product to Cart</TITLE>
+</HEAD>
+<BODY>
+    <h1>Add Product to Cart</h1>
+    <form method="post" action="/add_order_item/{{ product_id }}">
+        <label for="product_id">Product ID:</label>
+        <span>{{ product_id }}</span>
+        <input type="hidden" name="product_id" value="{{ product_id }}">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1" required>
+        <input type="submit" value="Add to Cart">
+    </form>
+</BODY>
+</HTML>
+
+
+
+<!--<BODY>
+    <h1>Add Product to Cart</h1>
+    <form method="post" action="/add_order_item"></form>
+    <form action="{{ url_for('all_order_items') }}" method="POST">
+        <label for="product_id">Product ID:</label>
+        <span>{{ product_id }}</span>
+        <input type="hidden" name="product_id" value="{{ product_id }}">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1">
+        <input type="submit" value="Add to Cart">
+    </form>
+</BODY>-->
+
+
+<!--<body>
     <h1>Add Order Item</h1>
     <form method="post" action="/add_order_item">
-        <label for="order_id">Order ID:</label>
-        <input type="text" id="order_id" name="order_id" required><br><br>
         <label for="product_id">Product ID:</label>
         <input type="text" id="product_id" name="product_id" required><br><br>
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" required><br><br>
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+</body>-->

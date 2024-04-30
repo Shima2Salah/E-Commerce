@@ -106,3 +106,9 @@ class DBStorage:
             count = len(models.storage.all(cls).values())
 
         return count
+
+    def query(self, cls):
+        """Returns a query object for the given class"""
+        if cls not in classes.values():
+            return None
+        return self.__session.query(cls)

@@ -16,9 +16,6 @@ class OrderItem(BaseModel, Base):
         product_id = Column(Integer, ForeignKey('products.id'), nullable=False)
         quantity = Column(Integer, nullable=False)
         price = Column(DECIMAL(10, 2), nullable=False)
-        '''orders = relationship("Order",
-                              backref="order_items",
-                              cascade="all, delete, delete-orphan")'''
     else:
         order_id = ""
         product_id = ""
