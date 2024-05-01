@@ -7,51 +7,60 @@
     <script src="https://kit.fontawesome.com/4fbcb9a71e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/styles/single.css">
     <title>E-commerce</title>
+    <script src="../static/scripts/counter.js"></script>
 </head>
 <body>
     <header>
         <div class="headup">
-            <div class="search">
+            <div class="logo">
+                <img src="../static/images/images.png" alt="" />
+            </div>
+            <nav class="navbar">
+                <ul id="lists">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropbtn">Home <i class="fa-solid fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                        </div>
+                      </li>
+                    <li class="dropdown">
+                        <a href="about.html" class="dropbtn">About <i class="fa-solid fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                        </div>
+                      </li>
+    
+                    <li><a href="page3.html">Shop</a></li>
+                    <li><a href="#">Catalogue</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-x"></i></a>
+    
+                  </ul>
+            </nav>
+            <!-- <div class="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" name="search" id="search-box" placeholder="search">
-            </div>
-            <div class="myname">
+            </div> -->
+            <!-- <div class="myname">
                 <span>
                     Mohamed Hamdy
                 </span>
-            </div>
+            </div> -->
             <div class="icons">
-                <a href=""><i class="fa-solid fa-user"></i></a> 
-                <a href=""><i class="fa-regular fa-heart"></i></a> 
-                <a href=""><i class="fa-solid fa-cart-shopping"></i></a> 
+               <a href=""><i class="fa-solid fa-user"></i></a> 
+               <a href=""><i class="fa-regular fa-heart"></i></a> 
+               <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a> 
+               <div class="mobile">
+                   <i id="bar" class="fas fa-outdent"></i>
+               </div>
             </div>
         </div>
-        <nav class="navbar">
-            <ul>
-                <li class="dropdown">
-                    <a href="index.html" class="dropbtn">Home <i class="fa-solid fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </li>
-                <li class="dropdown">
-                    <a href="about.html" class="dropbtn">About <i class="fa-solid fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </li>
 
-                <li><a href="page3.html">Shop</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="#">New Arrivals</a></li>
-                <li><a href="#">Contact</a></li>
-
-              </ul>
-        </nav>
     </header>
     <div class="bread">
         <ul class="breadcrumb">
@@ -61,24 +70,26 @@
     </div>
 
 
-    <section >
+
         <div class="blog-head">
             <div class="boot-image">
-                <img src="../static/images/cloth_1.jpg" alt="">
+                <img src="../static/images/{{ product.image_url }}" alt="">
             </div>
+            
             <div class="blog-words">
                 <span class="blog-text">
-                    Tank Top T-Shirt 
+                    {{ product.product_name }}
                 </span>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut suscipit ad dolore doloremque maxime cumque animi alias atque sequi amet sunt velit veniam, illo eum asperiores ut nostrum? Dignissimos, atque.
-                    Quaerat suscipit quod nobis saepe repudiandae voluptatem ipsa minima, nihil neque placeat laboriosam eligendi officia? Sit consequuntur amet, debitis ratione ex vitae voluptate veritatis expedita ab, qui, aperiam vel modi!
+                    {{ product.description }}
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, ut temporibus molestiae perferendis ab voluptatum explicabo adipisci numquam nisi nesciunt vitae excepturi optio corrupti mollitia, id laudantium ratione. Minima, necessitatibus?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut suscipit ad dolore doloremque maxime cumque animi alias atque sequi amet sunt velit veniam, illo eum asperiores ut nostrum? Dignissimos, atque.
+                   one ex vitae voluptate veritatis expedita ab, qui, aperiam vel modi!
                 </p>
+
                 <span class="price">
-                    $50
+                    ${{ product.price }}
                 </span>
                 <div class="radio">
                     <input type="radio" name="size">
@@ -90,19 +101,36 @@
                     <input type="radio" name="size">
                     <label for="extra">Extra Large</label>
                 </div>
-                <div class="counter">
+                <form method="post" action="/single/{{ product.id }}">
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <br>
+                    <label for="quantity">Quantity:</label>
+                    <!-- Input for displaying the quantity -->
+                    
+                    <!-- Counter buttons -->
+                    <div class="counter">
+                        <button type="button" onclick="decrement()">-</button>
+                        <input type="text" id="quantity" name="quantity" value="1" readonly>
+                        <button type="button" onclick="increment()">+</button>
+                    </div>
+                    <!-- Submit button -->
+                    <div class="cart">
+                        <button type="submit">Add to Cart</button>
+                    </div>
+                </form>
+                <!--<div class="counter">
                     <button>-</button>
                     <input type="number" name="" id="" min="1" max="10">
                     <button>+</button>
                 </div>
                 <div class="cart">
                     <button>
-                        <a href="cart.html">Add To Cart</a>
+                        <a href="cart.html">Add To Cart2</a>
                     </button>
-                </div>
+                </div>-->
             </div>
         </div>
-    </section>
+
 
 
     <section class="third-middle">
@@ -112,8 +140,8 @@
         </div>
         <div class="three-divs">
             <div class="shirt">
-                <div>
-                    <img src="../static/images/cloth_1.jpg" alt="">
+                <div class="shirt-img1">
+                    <!-- <img src="images/cloth_1.jpg" alt=""> -->
                 </div>
                 <div class="shirt-text">
                 <span class="up">
@@ -128,8 +156,8 @@
                 </div>
             </div>
             <div class="shirt">
-                <div>
-                    <img src="../static/images/shoe.png" alt="">
+                <div class="shirt-img2">
+                    <!-- <img src="images/cloth_1.jpg" alt=""> -->
                 </div>
                 <div class="shirt-text">
                 <span class="up">
@@ -144,8 +172,8 @@
                 </div>
             </div>
             <div class="shirt">
-                <div>
-                    <img src="../static/images/cloth_2.jpg" alt="">
+                <div class="shirt-img3">
+                    <!-- <img src="images/cloth_1.jpg" alt=""> -->
                 </div>
                 <div class="shirt-text">
                 <span class="up">
@@ -245,10 +273,11 @@
         
     </div>
 </footer>
-<div class="copyright">
+<script src="../static/scripts/script.js"></script>
+<!-- <div class="copyright">
     <p>
         Copyright &copy;2023 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <span>Mohamed Hamdy</span> 
     </p>
-</div>
+</div> -->
 </body>
 </html>

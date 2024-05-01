@@ -73,9 +73,9 @@
             <div class="aside-up">
                 <ul>
                     <li class="aside-cat"><h3>Categories</h3></li>
-                    {% for category in sorted_categories %}
-                        <li class="aside-list"><a href="">{{ category.name }}</a> <span>(2,220)</span></li>
-                    {% endfor %}
+                    <li class="aside-list"><a href="">Men</a> <span>(2,220)</span></li>
+                    <li class="aside-list"><a href="">Women</a> <span>(2,220)</span></li>
+                    <li class="aside-list"><a href="">Children</a> <span>(2,220)</span></li>
                 </ul>
             </div>
             <div class="aside-down">
@@ -86,23 +86,43 @@
                 </div>
                 <div class="content">
                     <h3>Size</h3>
-                    {% for size in sorted_sizes %}
-                        <div>
-                            <input type="checkbox" name="" id=""> <span>{{ size.size_name }} (2,319)</span>
-                        </div>
-                    {% endfor %}
+                    <div>
+                        <input type="checkbox" name="" id=""> <span>Small (2,319)</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="" id=""> <span>Medium (2,319)</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="" id=""> <span>Large (2,319)</span>
+                    </div>
 
                 </div>
                 <div class="content">
                     <h3>Color</h3>
-                    {% for color in sorted_colors %}
                     <div>
-                        <i class="fa-solid fa-circle {{ color.color_name.lower() }}"></i>
+                        <i class="fa-solid fa-circle red"></i>
                         <span>
-                            {{ color.color_name.capitalize() }} (50)
+                            Red (2,500)
                         </span>
                     </div>
-                    {% endfor %}
+                    <div>
+                        <i class="fa-solid fa-circle green"></i>
+                        <span>
+                            Green (2,500)
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-circle blue"></i>
+                        <span>
+                            Blue (2,500)
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-circle purple"></i>
+                        <span>
+                            Purple (2,500)
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,24 +158,165 @@
                 </div>
             </div>
             <div class="item-lists">
-                {% for i in range(0, sorted_products|length, 3) %}
                 <section class="third-middle">
+
                     <div class="three-divs">
-                        {% for product in sorted_products[i:i+3] %}
                         <div class="shirt">
                             <div>
-                                <a href="{{ url_for('single', product_id=product.id) }}"><img src="../static/images/{{ product.image_url }}" alt=""></a>
+                               <a href="single.html"><img src="../static/images/cloth_1.jpg" alt=""></a> 
                             </div>
                             <div class="shirt-text">
-                                <span class="up">{{ product.product_name }}</span>
-                                <span>{{ product.description }}</span>
-                                <span class="money">{{ product.price }}</span>
+                            <span class="up">
+                                tank top
+                            </span>
+                            <span>
+                                finding perfect t-shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
                             </div>
                         </div>
-                        {% endfor %}
+                        <div class="shirt">
+                            <div>
+                               <a href="single.html"><img src="../static/images/shoe.png" alt=""></a> 
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                corater
+                            </span>
+                            <span>
+                                finding perfect product
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                        <div class="shirt">
+                            <div>
+                               <a href="single.html"><img src="../static/images/cloth_2.jpg" alt=""></a> 
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                polo shirt
+                            </span>
+                            <span>
+                                finding perfect shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
                     </div>
                 </section>
-                {% endfor %}
+                <section class="third-middle">
+
+                    <div class="three-divs">
+                        <div class="shirt">
+                            <div>
+                              <a href="single.html"><img src="../static/images/cloth_1.jpg" alt=""></a>  
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                tank top
+                            </span>
+                            <span>
+                                finding perfect t-shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                        <div class="shirt">
+                            <div>
+                                <a href="single.html"><img src="../static/images/shoe.png" alt=""></a> 
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                corater
+                            </span>
+                            <span>
+                                finding perfect product
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                        <div class="shirt">
+                            <div>
+                                <a href="single.html"><img src="../static/images/cloth_2.jpg" alt=""></a>
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                polo shirt
+                            </span>
+                            <span>
+                                finding perfect shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="third-middle">
+
+                    <div class="three-divs">
+                        <div class="shirt">
+                            <div>
+                                <img src="../static/images/cloth_1.jpg" alt="">
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                tank top
+                            </span>
+                            <span>
+                                finding perfect t-shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                        <div class="shirt">
+                            <div>
+                                <img src="../static/images/shoe.png" alt="">
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                corater
+                            </span>
+                            <span>
+                                finding perfect product
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                        <div class="shirt">
+                            <div>
+                                <img src="../static/images/cloth_2.jpg" alt="">
+                            </div>
+                            <div class="shirt-text">
+                            <span class="up">
+                                polo shirt
+                            </span>
+                            <span>
+                                finding perfect shirt
+                            </span>
+                            <span class="money">
+                                $50
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div class="circle">
                     <ul>
                         <li><a href="#">&lt;</a></li>

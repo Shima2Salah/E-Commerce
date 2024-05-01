@@ -78,20 +78,20 @@
             <th>Remove</th>
 
         </tr>
-        {% for item in order_items %}
-            <tr class="headingtable">
-                <td class="display"> <img src="../static/images/{{ item.image_url }}"></td>
-                <td>{{ item.product_name }}</td>
-                <td>${{ item.unit_price }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>${{ item.price }}</td>
-                <td>
-                    <button class="remove">X</button>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-        <!--<tr class="headingtable">
+        <tr class="headingtable">
+            <td class="display"> <img src="../static/images/cloth_1.jpg"></td>
+            <td>Top Up T-Shirt</td>
+            <td>$49.00</td>
+            <td>
+                <button>-</button>
+                <input type="number">
+                <button>+</button>
+            </td>
+            <td>$49.00</td>
+            <td>
+                <button class="remove">X</button>
+            </td>
+        <tr class="headingtable">
             <td class="display"> <img src="../static/images/cloth_2.jpg"></td>
             <td>Top Up T-Shirt</td>
             <td>$49.00</td>
@@ -104,16 +104,12 @@
             <td>
                 <button class="remove">X</button>
             </td>
-      </table>-->
+      </table>
 
 <div class="cart-total">
         <div class="total-buttons">
-                <button class="purple-button">Update Cart</button>
-                <a href="/page3.html" class="white-button">Continue Shopping</a>
-           <!--<form action="{{ url_for('page3') }}">
-                <button class="white-button" type="submit">Continue Shopping</button>
-            </form>-->
-           <!--<button class="white-button">Continue Shopping</button>-->
+           <button class="purple-button">Update Cart</button>
+           <button class="white-button">Continue Shopping</button>
         </div>
 
         <div class="total-text">
@@ -137,11 +133,11 @@
 <ul class="subtotal">
     <li >
         <span class="item-1">Subtotal</span>
-        <span class="item-2">${{ total_price }}</span>
+        <span class="item-2">$230.00</span>
     </li>
     <li>
         <span class="item-3">Total</span>
-        <span class="item-4">${{ total_price }}</span>
+        <span class="item-4">$230.00</span>
     </li>
 </ul>
 

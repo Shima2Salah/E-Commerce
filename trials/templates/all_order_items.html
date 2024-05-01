@@ -12,6 +12,46 @@
             <thead>
                 <tr>
                     <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>{{ item.product_id }}</td>
+                    <td>{{ item.product_name }}</td> 
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.unit_price }}</td> 
+                    <td>{{ item.price }}</td>
+                    <td><img src="{{ item.image_url }}" alt="{{ item.product_name }}" width="100"></td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Total Price: {{ total_price }}</p>
+        <form action="{{ url_for('order_more_items') }}">
+            <button type="submit">Order More Items</button>
+        </form>
+        <form action="{{ url_for('register_user') }}">
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+<!--<body>
+    <h1>All Order Items</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
                     <th>Quantity</th>
                     <th>Price</th>
                 </tr>
@@ -34,10 +74,44 @@
             <button type="submit">Register</button>
         </form>
     </div>
-</body>
+</body>-->
 
-
-</html>
+<!--<body>
+    <h1>All Order Items</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>{{ item.product_id }}</td>
+                    <td>{{ item.product_name }}</td> 
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.unit_price }}</td> 
+                    <td>{{ item.price }}</td>
+                    <td><img src="{{ item.image_url }}" alt="{{ item.product_name }}" width="100"></td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Total Price: {{ total_price }}</p>
+        <form action="{{ url_for('order_more_items') }}">
+            <button type="submit">Order More Items</button>
+        </form>
+        <form action="{{ url_for('register_user') }}">
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>-->
 
 <!--<body>
     <h1>All Order Items</h1>

@@ -5,6 +5,32 @@
 </HEAD>
 <BODY>
     <h1>Add Product to Cart</h1>
+    <div class="blog-words">
+        <span class="blog-text">
+            {{ product.product_name }}
+        </span>
+        <p>
+            {{ product.description }}
+        </p>
+        <span class="price">
+            {{ product.price }}
+        </span>
+        <form method="post" action="/add_order_item/{{ product.id }}">
+            <label for="product_id">Product ID:</label>
+            <span>{{ product.id }}</span>
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" required>
+            <input type="submit" value="Add to Cart">
+        </form>
+    </div>    
+</BODY>
+</HTML>
+
+
+<!--<BODY>
+    <h1>Add Product to Cart</h1>
     <form method="post" action="/add_order_item/{{ product_id }}">
         <label for="product_id">Product ID:</label>
         <span>{{ product_id }}</span>
@@ -14,9 +40,7 @@
         <input type="number" id="quantity" name="quantity" value="1" required>
         <input type="submit" value="Add to Cart">
     </form>
-</BODY>
-</HTML>
-
+</BODY>-->
 
 
 <!--<BODY>
