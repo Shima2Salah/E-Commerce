@@ -112,10 +112,47 @@ def cart():
             return render_template('cart.html', order_items=[], total_price=0)
 
 
-@app.route('/proced.html')
-@app.route('/proced')
+@app.route('/proced.html', methods=['GET', 'POST'])
+@app.route('/proced', methods=['GET', 'POST'])
 def proced():
     """ display a HTML page only if n is an integer """
+    if request.method == 'POST':
+        # Process the form data
+        user_data = {
+            'first_name': request.form.get('first_name'),
+            'last_name': request.form.get('last_name'),
+            'contact_number': request.form.get('contact_number'),
+            'email': request.form.get('email'),
+            'password': request.form.get('password'),
+            'country': request.form.get('country'),
+            'company_name': request.form.get('company_name'),
+            'address': request.form.get('address'),
+            'state_or_country': request.form.get('state_or_country'),
+            'postal_or_zip': request.form.get('postal_or_zip'),
+            'order_notes': request.form.get('order_notes')
+        }
+
+        # Create a new User instance
+        new_user = User(**user_data)
+        storage.new(new_user)
+        storage.save()
+
+        # Process the order stored in the session
+        if 'order' in session:
+            total_price = sum(item['price'] for item in session['order'])
+            new_order = Order(user_id=new_user.id, total_price=Decimal(total_price))
+            storage.new(new_order)
+            storage.save()
+
+            for item in session['order']:
+                new_order_item = OrderItem(order_id=new_order.id, product_id=item['product_id'], quantity=item['quantity'], price=item['price'])
+                storage.new(new_order_item)
+                storage.save()
+
+            # Clear the order from the session
+            session.pop('order', None)
+
+        return redirect(url_for('thankyou'))
     return render_template('proced.html')
 
 @app.route('/thankyou.html')

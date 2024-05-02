@@ -17,8 +17,8 @@ class User(BaseModel, Base):
         first_name = Column(String(100), nullable=False)
         last_name = Column(String(100), nullable=False)
         contact_number = Column(String(100), nullable=False)
-        email = Column(String(100), unique=True, nullable=False)
-        password = Column(String(100), nullable=False)
+        email = Column(String(100), nullable=False)
+        password = Column(String(100), nullable=True)
         country = Column(String(100), nullable=False)
         company_name = Column(String(100), nullable=False)
         address = Column(String(100), nullable=False)
@@ -45,8 +45,8 @@ class User(BaseModel, Base):
         """initializes user"""
         super().__init__(*args, **kwargs)
 
-    def __setattr__(self, name, value):
+    '''def __setattr__(self, name, value):
         """to set an encryption password"""
         if name == "password":
             value = md5(value.encode()).hexdigest()
-        super().__setattr__(name, value)
+        super().__setattr__(name, value)'''

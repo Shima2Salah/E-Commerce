@@ -80,56 +80,56 @@
   <div class="left-text">
   Billing Details
   </div>
-<form action="">
+<form action="{{ url_for('proced') }}" method="post">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Country</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="country" required>
         <div id="emailHelp" class="form-text">
 
         </div>
       </div>
     <div class="row">
         <div class="col">
-            <label for="exampleInputEmail1" class="form-label">First Name</label>  
-          <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            <label for="first_name" class="form-label">First Name</label>  
+          <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="first_name" required>
         </div>
         <div class="col">
-            <label for="exampleInputEmail1" class="form-label">Last Name</label>
-          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            <label for="last_name" class="form-label">Last Name</label>
+          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last_name" required>
         </div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Company Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="company_name" class="form-label">Company Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="company_name" required>
         <div id="emailHelp" class="form-text">
             
         </div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="address" required>
         <div id="emailHelp" class="form-text">
             
         </div>
       </div>
       <div class="row">
         <div class="col">
-            <label for="exampleInputEmail1" class="form-label">State/Country</label>
-          <input type="text" class="form-control" placeholder="State" aria-label="First name">
+            <label for="state_or_country" class="form-label">State/Country</label>
+          <input type="text" class="form-control" placeholder="State" aria-label="First name" name="state_or_country" required>
         </div>
         <div class="col">
-            <label for="exampleInputEmail1" class="form-label">Postal / Zip</label>
-          <input type="text" class="form-control" placeholder="Code" aria-label="Last name">
+            <label for="postal_or_zip" class="form-label">Postal / Zip</label>
+          <input type="text" class="form-control" placeholder="Code" aria-label="Last name" name="postal_or_zip" required>
         </div>
       </div>
         <div class="row">
             <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Email Adress</label>
-              <input type="text" class="form-control" placeholder="@gmail.com" aria-label="First name">
+                <label for="email" class="form-label">Email Adress</label>
+              <input type="email" class="form-control" placeholder="@gmail.com" aria-label="First name" name="email" required>
             </div>
             <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Phone</label>
-              <input type="text" class="form-control" placeholder="0110011000" aria-label="Last name">
+                <label for="contact_number" class="form-label">Phone</label>
+              <input type="text" class="form-control" placeholder="0110011000" aria-label="Last name" name="contact_number" required>
             </div>
         </div>
         <div class="form-check">
@@ -145,9 +145,11 @@
             </label>
           </div>
               <div class="mb-3 textarea">
-                <label for="exampleFormControlTextarea1" class="form-label">Order Notes</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your notes here"></textarea>
+                <label for="order_notes" class="form-label">Order Notes</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your notes here" name="order_notes"></textarea>
               </div>
+              <br>
+              <input class="place-order" type="submit" value="Place Order">
 </form>
 </div>
 <div class="right-box">
@@ -205,7 +207,7 @@
                 <button>Direct Bank Transfer</button>
                 <button> Cheque Payment</button>
                 <button>Paypal</button>
-                <button class="place-order"><a href="thankyou.html"> Place Order</a></button>
+                <!--<button class="place-order"><a href="thankyou.html"> Place Order</a></button>-->
             </div>
         </div>
     </div>
@@ -237,7 +239,7 @@
         </div>
 
         <div class="foot-two">
-            
+           
                 <ul>
                     <li> Features</li>
                     <li> shopping cart</li>
