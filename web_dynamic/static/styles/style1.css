@@ -113,7 +113,7 @@ opacity: 1;
     justify-content: center;
     align-items: flex-start;
     height: 90vh;
-    background-image: url(/images/hero_1.png);
+    background-image: url(../images/hero_1.png);
     background-repeat: no-repeat;
     background-position: top 25% right 0;
     padding: 0 20px;
@@ -217,7 +217,7 @@ i.fa-solid.fa-circle-question.fa-3x{
 }
 .sec-middle .one{
   flex: 1;
-  background-image: url(images/women.jpg);
+  background-image: url(../images/women.jpg);
   background-size: cover;
   display: flex;
   flex-direction:column;
@@ -227,7 +227,7 @@ i.fa-solid.fa-circle-question.fa-3x{
 }
 .sec-middle .two{
   flex: 1;
-  background-image: url(images/children.jpg);
+  background-image: url(../images/children.jpg);
   background-size: cover;
   margin: 0 10px;
   display: flex;
@@ -239,7 +239,7 @@ i.fa-solid.fa-circle-question.fa-3x{
 }
 .sec-middle .three{
   flex: 1;
-  background-image: url(images/men.jpg);
+  background-image: url(../images/men.jpg);
   background-size: cover;
   display: flex;
   flex-direction:column;
@@ -329,18 +329,18 @@ hr{
 }
 
 .shirt-img1{
-  background-image: url(images/cloth_1.jpg);
+  background-image: url(../images/cloth_1.jpg);
   background-size: cover;
   height: 60%;
 }
 .shirt-img2{
-  background-image: url(images/shoe.png);
+  background-image: url(../images/shoe.png);
   background-size: cover;
   height: 60%;
   background-position: center;
 }
 .shirt-img3{
-  background-image: url(images/cloth_2.jpg);
+  background-image: url(../images/cloth_2.jpg);
   background-size: cover;
   height: 60%;
 }
@@ -390,7 +390,7 @@ hr{
     /* padding-left: 215px; */
 }
 .boot-image{
-  background-image: url(images/blog_1.jpg);
+  background-image: url(../images/blog_1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -634,7 +634,7 @@ ul#lists.active{
   text-align-last: center;
 }
 .boot-image {
-  background-image: url(images/blog_1.jpg);
+  background-image: url(../images/blog_1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -747,7 +747,7 @@ box-shadow: none;
   color: blueviolet;
 }
 .boot-image {
-  background-image: url(images/blog_1.jpg);
+  background-image: url(../images/blog_1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

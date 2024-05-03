@@ -155,7 +155,7 @@ ul {
     
 }
 .boot-image{
-  background-image: url(images/cloth_1.jpg);
+  /*background-image: url( ../images/cloth_1.jpg);*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -264,18 +264,18 @@ hr{
 }
 
 .shirt-img1{
-  background-image: url(images/cloth_1.jpg);
+  background-image: url(../images/cloth_1.jpg);
   background-size: cover;
   height: 60%;
 }
 .shirt-img2{
-  background-image: url(images/shoe.png);
+  background-image: url(../images/shoe.png);
   background-size: cover;
   height: 60%;
   background-position: center;
 }
 .shirt-img3{
-  background-image: url(images/cloth_2.jpg);
+  background-image: url(../images/cloth_2.jpg);
   background-size: cover;
   height: 60%;
 }
@@ -499,7 +499,7 @@ ul#lists.active{
   /* background-color: rgba(166,243,237,255); */
 }
 .boot-image {
-  background-image: url(images/cloth_1.jpg);
+  background-image: url(../images/cloth_1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

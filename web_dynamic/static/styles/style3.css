@@ -132,7 +132,7 @@ ul {
 }
 .sec-middle .one{
   flex: 1;
-  background-image: url(images/women.jpg);
+  background-image: url(../images/women.jpg);
   background-size: cover;
   display: flex;
   flex-direction:column;
@@ -142,7 +142,7 @@ ul {
 }
 .sec-middle .two{
   flex: 1;
-  background-image: url(images/children.jpg);
+  background-image: url(../images/children.jpg);
   background-size: cover;
   margin: 0 10px;
   display: flex;
@@ -154,7 +154,7 @@ ul {
 }
 .sec-middle .three{
   flex: 1;
-  background-image: url(images/men.jpg);
+  background-image: url(../images/men.jpg);
   background-size: cover;
   display: flex;
   flex-direction:column;

@@ -156,7 +156,7 @@ ul {
     
 }
 .boot-image{
-  background-image: url(../static/images/blog_1.jpg);
+  background-image: url(../images/blog_1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
