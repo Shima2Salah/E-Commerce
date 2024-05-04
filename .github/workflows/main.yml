@@ -26,15 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Check if MySQL Server is Running
-        run: sudo service mysql status
-
-      - name: Start MySQL Server if Not Running
-        run: |
-          if [[ $? -ne 0 ]]; then
-            echo "MySQL server is not running. Starting MySQL server..."
-            sudo service mysql start
-          fi
+      - name: Set up MySQL
+        run: ./mysql_setup.sh
 
       - name: Run MySQL Database Setup Scripts
         run: |
