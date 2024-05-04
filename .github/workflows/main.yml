@@ -1,0 +1,41 @@
+name: Deploy E-Commerce Website
+
+on:
+  # Runs on push to main or pull requests targeting main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run database setup scripts
+        run: |
+          mysql -hlocalhost -uroot -p < setup_ECommerce.sql
+          mysql -uroot -p < ecomm_dump.sql
+
+      - name: Run Flask App
+        run: |
+          ECOMM_MYSQL_USER=ecomm_dev \
+          ECOMM_MYSQL_PWD=ecomm_dev_pwd \
+          ECOMM_MYSQL_HOST=localhost \
+          ECOMM_MYSQL_DB=ecommerce \
+          ECOMM_TYPE_STORAGE=db \
+          python3 -m web_dynamic.app
