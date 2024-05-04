@@ -26,6 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Check MySQL Service Status
+        run: sudo service mysql status
+
       - name: Start MySQL Service
         run: sudo service mysql start
         if: failure()
