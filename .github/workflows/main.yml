@@ -31,8 +31,8 @@ jobs:
 
       - name: Run MySQL Database Setup Scripts
         run: |
-          mysql -hlocalhost -uroot -p < setup_ECommerce.sql
-          mysql -uroot -p < ecomm_dump.sql
+          mysql -hlocalhost -uroot -p123 < setup_ECommerce.sql
+          mysql -uroot -p123 < ecomm_dump.sql
 
       - name: Run Flask App
         run: |
