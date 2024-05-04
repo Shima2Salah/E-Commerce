@@ -26,17 +26,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Check MySQL Service Status
-        run: sudo service mysql status
-
-      - name: Start MySQL Service
-        run: sudo service mysql start
-        if: failure()
+      - name: Set up MySQL
+        run: ./mysql_setup.sh
 
       - name: Run MySQL Database Setup Scripts
         run: |
-          mysql -hlocalhost -uroot -p123456 < setup_ECommerce.sql
-          mysql -uroot -p123456 < ecomm_dump.sql
+          mysql -hlocalhost -uroot -p123 < setup_ECommerce.sql
+          mysql -uroot -p123 < ecomm_dump.sql
+
+      - name: Run Flask App
+        run: |
+          ECOMM_MYSQL_USER=ecomm_dev \
+          ECOMM_MYSQL_PWD=ecomm_dev_pwd \
+          ECOMM_MYSQL_HOST=localhost \
+          ECOMM_MYSQL_DB=ecommerce \
+          ECOMM_TYPE_STORAGE=db \
+          python3 -m web_dynamic.app
 
       - name: Run Flask App
         run: |
