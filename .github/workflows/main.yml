@@ -12,6 +12,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -26,6 +31,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Other setup steps here...
+
+      - name: Run Flask App
+        run: |
+          python3 -m web_dynamic.app
+        env:
+          DATABASE_URL: mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}
       # Set up Python, install dependencies, and other necessary steps...
 
       - name: Check MySQL Service Status
